@@ -1,0 +1,466 @@
+/**
+ * @Author: andreasprietzel
+ * @Date:   2020-02-29T17:22:37+01:00
+ * @Last modified by:   andreasprietzel
+ * @Last modified time: 2020-08-04T12:47:42+02:00
+*/
+
+
+.tl_tbox h3,
+.tl_box h3
+{
+	padding: 0;
+}
+
+.w50ForPageSpeed
+{
+	width: 50%;
+	float: left;
+}
+
+.RemoveStandardLabel h3 label
+{
+	display: none;
+}
+
+.PagespeedChartContainer
+{
+	width      : 45%;
+	height     : 300px;
+	position   : relative;
+	display    : inline-block;
+	font-family: Courier !important;
+}
+
+.NNPageSpeedResultBox *
+{
+	font-family: "Courier New",monospace!important;
+	font-weight: 100;
+}
+
+.NNPageSpeedResultBox h1
+{
+	width: 100%;
+	text-align: center;
+	font-weight: 900;
+	font-size: 21px;
+}
+
+.NNPageSpeedResultBox .Results
+{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.NNPageSpeedResultBox .Results > div
+{
+	max-width: 40vw;
+}
+
+.NNPageSpeedResultBox .Results .TheResult
+{
+	margin       : 0 auto;
+	margin-top   : 30px;
+	margin-bottom   : 45px;
+	font-weight  : 900;
+    font-size    : 30px;
+    text-align   : center;
+    border       : 6px solid black;
+    border-radius: 50%;
+    width        : 80px;
+    height       : 80px;
+    line-height  : 67px;
+}
+
+.NNPageSpeedResultBox .Audits
+{
+
+}
+
+.NNPageSpeedResultBox .Audits .Audit
+{
+	padding-top          : 10px;
+	/*padding-bottom       : 10px;*/
+	padding-left         : 15px;
+	padding-right        : 15px;
+	/*transition-duration: 300ms;*/
+	border-radius        : 2px;
+}
+
+.NNPageSpeedResultBox .Audits .Audit .Description
+{
+	display: block;
+}
+
+.NNPageSpeedResultBox .Audits .Audit.HasDetails
+{
+	cursor: pointer;
+}
+
+.NNPageSpeedResultBox .Audits .Audit:hover
+{
+	/*transition-duration: 100ms;*/
+	background-color: rgb(255,149,0);
+}
+
+.NNPageSpeedResultBox .Audits .Audit .ScoreColor
+{
+	width        : 10px;
+    height       : 10px;
+    border-radius: 50%;
+    display      : inline-block;
+    margin-top   : 2px;
+	margin-right  : 5px;
+    float        : left;
+	border: 1px solid transparent;
+	background-color: gray;
+}
+
+.NNPageSpeedResultBox .Audits .Audit:hover .ScoreColor
+{
+	border: 1px solid black;
+}
+
+.NNPageSpeedResultBox .Audits .Audit h3
+{
+	display: inline-block;
+	margin: 0;
+}
+
+.NNPageSpeedResultBox .Audits .Audit .Value
+{
+	display     : inline-block;
+	float       : right;
+	margin-left : 15px;
+	margin-right: 5px;
+}
+
+.NNPageSpeedResultBox .Audits .Audit .ShowMoreIcon
+{
+	background-image   : url('arrow.svg');
+	width              : 18px;
+	height             : 12px;
+	display            : inline-block;
+	background-size    : 100%;
+	background-position: center center;
+	position           : relative;
+	top                : 1px;
+	transform          : rotate(180deg);
+	float              : right;
+}
+
+.NNPageSpeedResultBox .Audits .Audit.Open .ShowMoreIcon
+{
+	transform : rotate(0deg);
+}
+
+.NNPageSpeedResultBox .Audits .Audit table
+{
+	width: 100%;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.NNPageSpeedResultBox .Audits .Audit table td
+{
+	position: relative;
+}
+
+.NNPageSpeedResultBox .Audits .Audit table td,
+.NNPageSpeedResultBox .Audits .Audit table th
+{
+	font-size: 12px;
+}
+
+.NNPageSpeedResultBox .Audits .Audit.HasDetails table
+{
+	display: none;
+}
+
+.NNPageSpeedResultBox .Audits .Audit.HasDetails.Open table
+{
+	display: block;
+}
+
+.NNPageSpeedResultBox .Audits .Audit ul
+{
+	max-width: 80%;
+}
+
+.NNPageSpeedResultBox .Audits .Audit ul li
+{
+	max-width    : 70%;
+	border-bottom: 1px solid black;
+	overflow     : hidden;
+	white-space  : nowrap;
+	text-overflow: ellipsis;
+}
+
+.NNPageSpeedResultBox .Audits .Audit ul li .Key
+{
+	float      : none;
+	font-weight: 500;
+}
+
+.NNPageSpeedResultBox .Audits .Audit ul li .Value
+{
+	float        : none;
+	overflow     : hidden;
+	white-space  : nowrap;
+	text-overflow: ellipsis;
+}
+
+.NNPageSpeedResultBox .Audits .Audit .Help
+{
+	font-weight  : 900;
+	margin-left  : 5px;
+	border       : 1px solid black;
+	border-radius: 50%;
+	padding-left : 4px;
+	padding-right: 4px;
+	cursor: pointer;
+}
+
+.NNPageSpeedResultBox .Audits .Audit .DescriptionToolTip
+{
+    background-color: transparent;
+    color           : black;
+    text-align      : justify;
+    z-index         : 1;
+    top             : 0;
+    bottom          : 0;
+    height          : 0px;
+    display         : inline-block;
+    margin-left     : 16px;
+    overflow        : hidden;
+	margin-top      : 15px;
+	margin-right    : 16px;
+}
+
+.NNPageSpeedResultBox .Audits .Audit .DescriptionToolTip a
+{
+	text-decoration: underline;
+	color: rgb(10, 132, 255);
+}
+
+.NNPageSpeedResultBox .Audits .Audit .DescriptionToolTip.Show
+{
+	height: auto;
+}
+
+
+.NNPageSpeedResultBox .Audits .Audit table td .Tooltiptext
+{
+	visibility      : hidden;
+	background-color: transparent;
+	color           : black;
+	text-align      : left;
+	padding         : 5px 0;
+	border-radius   : 6px;
+	position        : absolute;
+	z-index         : 1;
+	left            : 25%;
+	top             : 0;
+	bottom          : 0;
+	width           : 70%;
+	word-break      : break-all;
+}
+
+.NNPageSpeedResultBox .Audits .Audit table td.HasTooltip:hover .Tooltiptext
+{
+	visibility: visible;
+	color: black;
+}
+
+.NNPageSpeedResultBox .Audits .Audit table td.HasTooltip:hover
+{
+	color: transparent;
+}
+
+.NNPageSpeedResultBox .Audits .Audit table:hover td::before
+{
+	color: black !important;
+}
+
+.NNPageSpeedResultBox .Websites
+{
+	margin    : 0 auto;
+    width     : 50%;
+	margin-top: 80px;
+}
+
+.NNPageSpeedResultBox .Websites li
+{
+	padding-left  : 33px;
+	white-space   : nowrap;
+    overflow      : hidden;
+    text-overflow : ellipsis;
+	font-size     : 20px;
+	margin-bottom : 8px;
+}
+
+.NNPageSpeedResultBox .Websites li::before
+{
+	content          : "";
+    background-image : none;
+    background-size  : auto 100%;
+    background-repeat: no-repeat;
+    width            : 24px;
+    height           : 24px;
+    display          : inline-block;
+	top              : 5px;
+	position         : relative;
+	margin-right     : 10px;
+}
+
+.NNPageSpeedResultBox .Websites li.Progress::before
+{
+	background-image : url('progress.svg');
+	-webkit-animation: spin 4s linear infinite;
+	-moz-animation   : spin 4s linear infinite;
+	animation        : spin 4s linear infinite;
+}
+
+.NNPageSpeedResultBox .Websites li.Checked::before
+{
+	background-image : url('checked.svg');
+}
+
+.NNPageSpeedResultBox .Websites li.Failed::before
+{
+	background-image : url('error.svg');
+}
+
+.NNPageSpeedResultBox .Websites .Score
+{
+
+}
+
+.NNPageSpeedResultBox .Websites .Score .mobile
+{
+	margin-right: 10px;
+}
+
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+/*responsive table */
+
+* {
+	box-sizing:border-box;
+}
+
+table {
+	width:100%;
+}
+
+table, td, tr, th {
+	border         : 2px solid black;
+	border-collapse: collapse;
+	text-align     : left;
+}
+
+td, tr, th {
+	padding:1em;
+}
+
+th {
+	background:#eee;
+	font-weight: bold;
+}
+
+
+	table, tr, td {
+		padding:0;
+		border:1px solid black;
+	}
+
+	table {
+		border:none;
+	}
+
+	thead {
+		display:none;
+	}
+
+	tr {
+		float: left;
+		width: 100%;
+		margin-bottom: 2em;
+	}
+
+	td {
+		float: left;
+		width: 100%;
+		padding:1em;
+	}
+
+	td::before {
+		content:attr(data-label);
+		word-wrap: break-word;
+		background: #eee;
+		border-right:2px solid black;
+		width: 20%;
+		float:left;
+		padding:1em;
+		font-weight: bold;
+		margin:-1em 1em -1em -1em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+
+
+/*spinner*/
+
+.spinner {
+  margin: 100px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.cube1, .cube2 {
+  background-color: #333;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  -webkit-animation: sk-cubemove 1.8s infinite ease-in-out;
+  animation: sk-cubemove 1.8s infinite ease-in-out;
+}
+
+.cube2 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+@-webkit-keyframes sk-cubemove {
+  25% { -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5) }
+  50% { -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg) }
+  75% { -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5) }
+  100% { -webkit-transform: rotate(-360deg) }
+}
+
+@keyframes sk-cubemove {
+  25% {
+    transform: translateX(42px) rotate(-90deg) scale(0.5);
+    -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
+  } 50% {
+    transform: translateX(42px) translateY(42px) rotate(-179deg);
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
+  } 50.1% {
+    transform: translateX(42px) translateY(42px) rotate(-180deg);
+    -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
+  } 75% {
+    transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+    -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
+  } 100% {
+    transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+  }
+}

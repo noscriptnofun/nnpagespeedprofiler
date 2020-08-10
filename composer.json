@@ -1,0 +1,52 @@
+{
+    "name": "nsnf/nnpagespeedprofiler",
+    "type": "contao-bundle",
+	"version":"1.0.0",
+	"description": "Create google pagespeed profiles for your websites.",
+	"keywords": ["contao", "pagespeed", "seo", "google"],
+    "homepage": "https://nsnf.de",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Andreas Prietzel",
+            "homepage": "https://nsnf.de"
+        }
+    ],
+    "require": {
+		"php": "^7.0",
+		"contao/core-bundle": "~4.7"
+	},
+    "conflict": {
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "require-dev": {
+		"contao/manager-plugin": "^2.0",
+		"friendsofphp/php-cs-fixer": "^2.12",
+		"phpunit/phpunit": "^7.0"
+    },
+    "extra": {
+        "contao-manager-plugin": "nsnf\\NNPageSpeedProfiler\\ContaoManager\\Plugin"
+    },
+    "autoload": {
+        "psr-4": {
+            "nsnf\\NNPageSpeedProfiler\\": "src/"
+        },
+		"classmap": [
+					"src/Resources/contao/"
+		],
+		"exclude-from-classmap": [
+					"src/Resources/contao/config/",
+					"src/Resources/contao/dca/",
+					"src/Resources/contao/languages/",
+					"src/Resources/contao/templates/"
+		]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "nsnf\\NNPageSpeedProfiler\\Tests\\": "tests/"
+        }
+    },
+    "support": {
+        "issues": "https://nsnf.de"
+    }
+}

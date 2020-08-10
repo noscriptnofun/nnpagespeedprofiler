@@ -1,0 +1,107 @@
+<?php
+# @Author: andreasprietzel
+# @Date:   1970-01-01T01:00:00+01:00
+# @Last modified by:   andreasprietzel
+# @Last modified time: 2020-08-10T13:23:55+02:00
+
+	$this->import("database");
+	$data = $this->database->prepare("SELECT url FROM tl_NNPageSpeedData ORDER BY tstamp DESC LIMIT 1")->execute( $url )->fetchAllAssoc();
+
+	$host = $_SERVER['HTTP_HOST'];
+    $protocol=$_SERVER['PROTOCOL'] = isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS']) ? 'https' : 'http';
+
+	$url = $protocol.'://'.$host;
+
+	if  ((is_array($data)) && (count($data) > 0))
+	{
+		$url = $data[0]['url'];
+	}
+?>
+
+
+<div class="tl_formbody_edit">
+	<fieldset id="pal_Angaben zum Unternehmen" class="tl_tbox">
+		<div>
+			<h3><label for="ctrl_name">URL:</label></h3>
+			<input type="text" name="url" id="ctrl_url" class="tl_text" value="<?=$url?>" onfocus="Backend.getScrollOffset()">
+			<p class="tl_help tl_tip" title="">Welche Seite soll getestet werden?</p>
+		</div>
+	</fieldset>
+	<div class="PagespeedChartContainer Mobile">
+		<canvas id="pagespeedChartMobile"></canvas>
+	</div>
+	<div class="PagespeedChartContainer Desktop">
+		<canvas id="pagespeedChartDesktop"></canvas>
+	</div>
+</div>
+
+<script>
+	<?php
+		$data = $this->database->prepare("SELECT id, score, tstamp, strategy FROM tl_NNPageSpeedData WHERE url=? ORDER BY tstamp DESC,strategy LIMIT 40")->execute( $url )->fetchAllAssoc();
+		echo 'var labelsData = [];';
+		echo 'var desktopData = [];';
+		echo 'var mobileData = [];';
+		$desktopIndex = 0;
+		$mobileIndex = 0;
+		if  ((is_arry($data)) && (count($data) > 0))
+		{
+			$data = array_reverse($data);
+			foreach ($data as $index => $theRow)
+			{
+				if ($theRow['strategy'] === 'desktop')
+				{
+					echo 'labelsData['.$desktopIndex.'] = "'.strftime("%d.%m.%Y",$theRow['tstamp']).'";';
+					echo 'desktopData['.$desktopIndex++.'] = '.($theRow['score']*100).';';
+				} else
+				{
+					echo 'mobileData['.$mobileIndex++.'] = '.($theRow['score']*100).';';
+				}
+
+			}
+		}
+	?>
+
+
+	function initChart(withTagID, andName, andData, andLabels)
+	{
+		var context = document.getElementById(withTagID).getContext('2d');
+		return new Chart(context, {
+			// The type of chart we want to create
+			type: 'line',
+
+			// The data for our dataset
+			data: {
+				labels: andLabels,
+				datasets: [{
+					label: andName,
+					backgroundColor: 'rgba(245, 127, 5,0.5)',
+					borderColor: 'rgb(245, 127, 5)',
+					data: andData
+				}]
+			},
+
+			// Configuration options go here
+			options:
+			{
+				maintainAspectRatio: false,
+				layout: {
+					padding: {
+						left: 50,
+						right: 50,
+						top: 0,
+						bottom: 0,
+					},
+					height: 90,
+
+				},
+				height: 90,
+			}
+		});
+	}
+
+	window.onload = function()
+	{
+		window.mobileChart = initChart('pagespeedChartMobile', 'Mobile', mobileData, labelsData);
+		window.desktopChart = initChart('pagespeedChartDesktop', 'Desktop', desktopData, labelsData);
+	}
+</script>
